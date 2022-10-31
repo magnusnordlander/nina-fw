@@ -34,5 +34,5 @@ void delay(uint32_t ms)
 
 void delayMicroseconds(uint32_t usec)
 {
-  ets_delay_us(usec);
+  esp_rom_delay_us(usec);
 }

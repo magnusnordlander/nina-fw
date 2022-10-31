@@ -22,31 +22,36 @@
  * SOFTWARE.
  */
 
-#ifndef SHA1_H
-#define SHA1_H
+#include "SHA1.h"
 
-#include <bearssl/bearssl_hash.h>
+SHA1Class::SHA1Class() :
+  SHAClass(SHA1_BLOCK_SIZE, SHA1_DIGEST_SIZE)
+{
+}
 
-#include "SHA.h"
+SHA1Class::~SHA1Class()
+{
+}
 
-#define SHA1_BLOCK_SIZE 64
-#define SHA1_DIGEST_SIZE 20
+int SHA1Class::begin()
+{
+  br_sha1_init(&_ctx);
 
-class SHA1Class: public SHAClass {
+  return 1;
+}
 
-public:
-  SHA1Class();
-  virtual ~SHA1Class();
+int SHA1Class::update(const uint8_t *buffer, size_t size)
+{
+  br_sha1_update(&_ctx, buffer, size);
 
-protected:
-  virtual int begin();
-  virtual int update(const uint8_t *buffer, size_t size);
-  virtual int end(uint8_t *digest);
+  return 1;
+}
 
-private:
-  br_sha1_context _ctx;
-};
+int SHA1Class::end(uint8_t *digest)
+{
+  br_sha1_out(&_ctx, digest);
 
-extern SHA1Class SHA1;
+  return 1;
+}
 
-#endif
+SHA1Class SHA1Instance;

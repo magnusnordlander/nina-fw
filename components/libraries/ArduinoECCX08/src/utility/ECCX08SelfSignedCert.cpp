@@ -131,7 +131,7 @@ String ECCX08SelfSignedCertClass::sha1()
 {
   char result[20 + 1];
 
-  SHA1(result, (const char*)_bytes, _length);
+  SHA1Instance(result, (const char*)_bytes, _length);
 
   String sha1Str;
 

@@ -24,6 +24,7 @@ extern "C" {
 #include <esp_intr.h>
 #include <rom/ets_sys.h>
 #include <soc/gpio_sig_map.h>
+#include <xtensa/xtensa_api.h>
 }
 
 #include <Arduino.h>

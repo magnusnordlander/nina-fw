@@ -21,6 +21,7 @@
 
 extern "C" {
   #include <driver/periph_ctrl.h>
+  #include <soc/gpio_periph.h>
 
   #include <driver/uart.h>
   #include <esp_bt.h>
@@ -69,11 +70,11 @@ void setDebug(int d) {
     _GLOBAL_REENT->_stdout = fopen(default_uart_dev, "w");
     _GLOBAL_REENT->_stderr = fopen(default_uart_dev, "w");
 
-    uart_div_modify(CONFIG_CONSOLE_UART_NUM, (APB_CLK_FREQ << 4) / 115200);
+    uart_div_modify(CONFIG_ESP_CONSOLE_UART_NUM, (APB_CLK_FREQ << 4) / 115200);
 
     // uartAttach();
     ets_install_uart_printf();
-    uart_tx_switch(CONFIG_CONSOLE_UART_NUM);
+    uart_tx_switch(CONFIG_ESP_CONSOLE_UART_NUM);
   } else {
     PIN_FUNC_SELECT(GPIO_PIN_MUX_REG[1], PIN_FUNC_GPIO);
     PIN_FUNC_SELECT(GPIO_PIN_MUX_REG[3], PIN_FUNC_GPIO);

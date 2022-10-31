@@ -18,6 +18,7 @@
 */
 
 #include <driver/gpio.h>
+#include <esp_attr.h>
 
 #include "wiring_digital.h"
 

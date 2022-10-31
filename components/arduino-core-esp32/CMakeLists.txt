@@ -1,0 +1,13 @@
+idf_component_register(SRCS "delay.c"
+					"IPAddress.cpp"
+					"itoa.c"
+					"Print.cpp"
+					"Stream.cpp"
+					"WInterrupts.c"
+					"wiring.c"
+					"wiring_analog.c"
+					"wiring_digital.c"
+					"WMath.cpp"
+					"WString.cpp"
+                       INCLUDE_DIRS "."
+                       REQUIRES nvs_flash driver esp_hw_support)
